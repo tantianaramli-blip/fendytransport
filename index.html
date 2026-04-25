@@ -1,0 +1,118 @@
+Return-Path: <saifulaffendi1990@gmail.com>
+Received: from 209.85.160.43_.trendmicro.com (unknown [192.168.181.172])
+	by inpost.tmes.trendmicro.com (Postfix) with SMTP id 2476D1000041C
+	for <eis_portal@perkeso.gov.my>; Tue, 03 Mar 2026 10:42:40 +0000 (UTC)
+ARC-Authentication-Results: i=2; tmes.trendmicro.com; spf=pass (sender IP address: 209.85.160.43) smtp.mailfrom=gmail.com; dkim=pass (signatures verified) header.d=gmail.com; dmarc=pass action=none header.from=gmail.com; arc=pass
+ARC-Message-Signature: i=2; a=rsa-sha256; d=tmes.trendmicro.com;
+	s=tm-arc-20210909; t=1772534560; c=relaxed/relaxed;
+	bh=JCOe6jzs1s6odErH41j6XcQARwp7oi1le2MM4DtWvw8=; h=From; b=e51IJdYRuZUGdonKZMbEWU1fs3epkdz3XGG6PPF/I/TnM1LgMCndVi9a7XsDc+G8iLP3r9nVjeleIyFUKgF1m8HOlzpLtggxVoHLTTlAcW2r7OOFzoOoTQsNCTWBydcHbbBoNOWwxmBa1SEmYz5aJGG1LqsH6UEwcSqeGl6e5cKMjlbXIDsSgOVGRf+zXyGJ1gHotrAPEEO7QUdGV2ySwTyiwmaPPLClKePhXWWSoYrOfsjY+y3jrOW0hTp6Qggft8U59hpE+6GizdL4HUqVHPHJ0989Ri3YFZkAP6wnDwtF1l7JJ2695jdlCA/pZdI45GSFDkjWTgN9lFa7kB33dQ==
+ARC-Seal: i=2; a=rsa-sha256; d=tmes.trendmicro.com; s=tm-arc-20210909;
+	t=1772534560; cv=pass; b=XE4cu5Ip8KAMSak2XtFfshYR6KzMph0+fragmegN963a5JbA5FlC5yj8Zi68I9r7TSve48KPGGMRXDHqlArWY8tdNHNpyNJj9fThw0ISoAklioK6fbEaa33KhIKroTPaPue8wzk9qd4gGdSPnFWX//SsTEfN5SV/i3VwSD/snBt6+tvLjMoChcMQWHLrRpbhGjfh6Rrn55ay6AV0JsY0GC89XouWf4Qm4H481WGti5EjLxlCylETeCu3m9JNOeKQ1TawbDmTE+ZNvWWArj6OjkhPFzdflq8lKj5dggi3gzPqbF92saKiwM60nEzZbVVi6l+ZT5E/YBvPIkQt6qpyJg==
+X-TM-MAIL-RECEIVED-TIME: 1772534559.668000
+X-TM-MAIL-UUID: 97fd2429-12c1-4b9c-acf3-5d2b54578bfc
+Received: from mail-oa1-f43.google.com (unknown [209.85.160.43])
+	by inpre01.tmes.trendmicro.com (Trend Micro Email Security) with ESMTPS id A332010000077
+	for <eis_portal@perkeso.gov.my>; Tue, 03 Mar 2026 10:42:39 +0000 (UTC)
+Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-40ef10ec84cso528012fac.2
+        for <eis_portal@perkeso.gov.my>; Tue, 03 Mar 2026 02:42:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772534559; cv=none;
+        d=google.com; s=arc-20240605;
+        b=AP4MUi6X1eueRszGXc1DDfDCReC07EgMok+qfsfILajii6bEEVzXM7tTi46L2vRf42
+         98Euf3is29T86fGFyWGJyjYxv5yJlexJgkoOCw837itYL52msMzlqdtHcHfWWi1Dw3vc
+         okzj2JeF2eYVzuJayt/H0ZrjKxMFJCoBZdWzJQTrcQKUAnhXmns26I+Ka5MnpNUV4EGn
+         yDiyRdnGPpSEB9L6SbXom89i6HRQTZaVKuqcOp82KIbjTYDLe67GAGi2tr3UYWhPeQXU
+         QArFLchwlexpRTsm8m841bruX7cKyJHc6E4aYWorkStB4sSP2qsQs13Ip5Ikv3v+52IW
+         ozjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=JCOe6jzs1s6odErH41j6XcQARwp7oi1le2MM4DtWvw8=;
+        fh=15b0B04Ya65JJ9JwcJjYaT1AO8PApt1zvdTI1QAZFDU=;
+        b=Vpnu9/kEd2gucDJUGDb9F7gQtw+0wRyro0YV11kkgjJzA4nuvFNK0h0bxHBJR3ed4v
+         6pqg/jHqg0Q9P0Q438f0ZIDdeKqxkCwAMK7SJtIL0YFIkvrd4qcnSwPyuUEIs/pLH0vA
+         3lnRgYz7ku/OMl13Oa+QUK4Ila6gJxLKR1mWgcbGmZ6UI45qm5YqosDUJ+/ceXeWrhpQ
+         Gu9/brAv4ewJr1m3gougoGnJeB612CpNsaHfyCwC0D6+KM4Rjnpe64AGAlybDDUZgPvw
+         0J8YXW6UQmEiY6wgGSoVeEE/def5tP9P5mwIO2JkB17pHCzt8aHyQ/NPIlBp+aTULJAX
+         xFhg==;
+        darn=perkeso.gov.my
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772534559; x=1773139359; darn=perkeso.gov.my;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=JCOe6jzs1s6odErH41j6XcQARwp7oi1le2MM4DtWvw8=;
+        b=B8+VybxlhA6I+46ma5rVIOyi7sB5T/P+HfL5Trpn9eoT+mI0Cn1ZamfExERswH+O/C
+         jmOcivDn8KBY87gMXNcNGC7TZSpwB9NoJ/Na6Y2ILKds5Y3PFi7vsYM8CAc6p2y8dZrJ
+         ARR7LIIFoazkXlFadtJ9NLLStMK3P4EMcmRzpAY+KJktQ/pK5GL1xY1XXZxOncvN2Gru
+         p1E6OHYMG2AAmkM1OBadx6Ags8tQoF4drWsfh2ENhzcLfo+pussTKEF3W7rqwkkA7s0a
+         03RzTSuILOQ0ptsNGKbCkSWf8EPpJhWTb3j3PEhsGzY1zCCSExk+4SZ4whz1YcySRD+s
+         Uqrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772534559; x=1773139359;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JCOe6jzs1s6odErH41j6XcQARwp7oi1le2MM4DtWvw8=;
+        b=R1g/CVP4ldj0cAG3gbS7TydZ215RISWSmgNxdNP8mhQ0jJu87EgyoJn0tQEwyVulPM
+         dQblqxr7TIUd0Ath68MzaL/Ygd2Erfdx24hZ0/JuSpEv2X2dCx97EHhg34Ha6fyTJCxh
+         yYnPrq5aaCcgY8WphJnxJ1I8rDGrr01Q5Vjt1UTqya87oWpYo/z03vq+aSSvsby+AZ/f
+         ndCgIL7dZpDpcEGQpWmLa17qdesPamiSZF9iB/El68iC/WX3ube7/+QdDKgQ1MCyLyXj
+         gjEPxweO/gs9TJsw4s5zyAlM3D8BcIsFdBt7ZNv13HltyMHC0NsAf9h8rBPHDhsv0Z6j
+         YM4A==
+X-Gm-Message-State: AOJu0YzmSt6H6ouieGRL8CxsOE1uW0ww1dLGC4m9jBCmFARRHn9yT85X
+	V6SbbhesHo0OiVMzLyPjDIZKPt6zT2vouNNoGYFbDa0VDvXhiBDTf5kRGPbHaD9Sc96HZBB79WG
+	EeJeMn4SJp5DjZx+wwavfPpdH1JYRwEopOQ==
+X-Gm-Gg: ATEYQzzcYMKc9JEoiJ+AWV+tQUtnUWl27e0Cssc0UE9RxFmxSnBAlU9fffS+Jdv2V/h
+	ipeImC63BjoZ4RzIzDC4SLvzJ6P5lCyHTru0/ESEMoiE3NB/gN+mzbq84BjOy7/ugvTIEPELrQJ
+	2CQPIkqY5i95+AkAuhjnjQzd38RVChYWVQLmmNpMMqFyJ7p1y4CmtUnlgD9q5OvQfOTFmyOjlCZ
+	hMicWc2idBSB7rMJuMt5X17Yg1ipv8qQrhoLNM0EjgffKAGjpE1O1hdfvyTPJ3JrihX/R45DxDh
+	CEvi+uUgnIiGmb19h51Z4ImSNlAHLpXsfihmfD2g
+X-Received: by 2002:a05:6820:2299:b0:679:c352:9a45 with SMTP id
+ 006d021491bc7-679fadf147amr8236701eaf.17.1772534558720; Tue, 03 Mar 2026
+ 02:42:38 -0800 (PST)
+MIME-Version: 1.0
+References: <6998e0da.050a0220.b9506.32f4SMTPIN_ADDED_BROKEN@mx.google.com>
+In-Reply-To: <6998e0da.050a0220.b9506.32f4SMTPIN_ADDED_BROKEN@mx.google.com>
+From: Saiful Affendi <saifulaffendi1990@gmail.com>
+Date: Tue, 3 Mar 2026 18:42:04 +0800
+X-Gm-Features: AaiRm53IN2cw7l-6y1CNna2HyZWjtKk2oNC7mPDPO0LGlWxgI5WKQEUYR-sTk0I
+Message-ID: <CAKRrmrW8wEqGgX5J7fkc1K584mE54mEe4kfmPV3OCjbW3mZfzA@mail.gmail.com>
+Subject: Re: [Jangan balas] Peringatan untuk membuat Tuntutan Elaun Latihan
+To: eis_portal@perkeso.gov.my
+Content-Type: multipart/alternative; boundary="000000000000b98808064c1c5c18"
+X-TM-Received-SPF: Pass (domain of saifulaffendi1990@gmail.com designates 
+	209.85.160.43 as permitted sender) client-ip=209.85.160.43; 
+	envelope-from=saifulaffendi1990@gmail.com; helo=mail-oa1-f43.google.com
+X-TM-Authentication-Results: spf=pass (sender IP address: 209.85.160.43) 
+	smtp.mailfrom=gmail.com; dkim=pass (signatures verified) 
+	header.d=gmail.com; dmarc=pass action=none header.from=gmail.com; arc=pass
+X-TM-AS-ERS: 209.85.160.43-127.9.11.1
+X-TMASE-Version: StarCloud-1.3-9.2.1011-29794.007
+X-TMASE-Result: 10--17.832500-5.000000
+X-TMASE-MatchedRID: coXemixtkRLxiWzN0q9gGpXL9FToUxLrIMqQ1ZLZ1KwrwvLze83KAisO
+	udSklmkiel+rO1OhCXoH40SGmb2mE9GWdb4fn9mBITytpp/jrEwwoEy+KKX0shtBiy9JWmO65Lw
+	R9uF15d4rm4L+Xz0KyG54YYz/fzAqYqM4fMxms9Xe+g73afcsKv2y0baeZ7uRL2pE5qR20hqyPh
+	v0YD5BbvWGlFmu0o7EHTvu1afABSXcdNV++dLhRHjC/VqWV3d7T6RGO66pckA++N18E/f3GdvuN
+	Z4GFCpZxMTfetU75BcSFdDDyhnYFuEDhtPq2QImOagwGSua5/+YJgzgxqgVT3vBA9C/1eiF8CsH
+	qdsq1hfYeXOEzfM22XCk1uAygznkuGFtyDwZQ5pZZLPh2uNIuGKaajCLWxIDykFMFOwR3N9+uW+
+	jurib70JVM3P4MHffcYO7LzLWqS62FEUBwKd8yp+t72tNDmjic+treT8uiAuyhyiBC2oa/NNYtV
+	CsXDqwSngXz/lzGx4=
+X-TMASE-XGENCLOUD: cf19529e-82bd-4e76-85dd-32e635cb9584-0-0-200-0
+X-TMASE-SNAP-Result: 1.821001.0001-0-1-22:0,33:0,34:0-0
+X-TM-RISKAI-PTN-VERSION: 1.24.0+20260225.7d866cd
+X-TM-RISKAI-MATCHEDFID: WyJGSUwwMDIiLCAiRklMMDM2IiwgIkZJTDA0MCIsICJGSUwwNDEi
+	LCAiRklMMDQyIiwgIkZJTDA3NyIsICJGSUwwNzgiLCAiRklMMDgxIiwgIkZJTDA4MU4iLCAiRkl
+	MMDg1IiwgIkZJTDA4NyIsICJGSUwwOTciLCAiRklMMDk4IiwgIkZJTDEwMCIsICJGSUwxMTIiLC
+	AiRklMMTM3IiwgIkZJTDE5NyIsICJGSUwxOTgiLCAiRklMMjkzIl0=
+X-TM-Deliver-Signature: A6EE8A5652E3550E5E587345FDBBC8A0
+X-TM-Addin-Auth: 2kp747kE4BXyCpb1PEKKF0+KdJKrkcBGeQeOmWuYphQZNBBgEfURHWL2zdv
+	4Ke+mNTkve5/+xFEHcFKPEBiEOcXhkpvTidIZ7Lx3EU+NL6zvo/Vf0OVIidwXxeSExb1chndW/d
+	K8LJFkfQ8KsDPAfiscuD98vYODExJNpxaXoSaTJj9THd0GcAihDvJ5YKSb2AprSZvWjOX1GCdfE
+	q47tv1RpMMirPkkqooMISp3KJN6uXFwWeatDLUXkB2U5ZlQF4Hu4A4dfyjPtOlR2HXDlWhfOmQp
+	aZQkNxnjDSbB//TMmCfmn5D8NAvPHTpf9xWAqTBafDy71oyxJBiJXZW1Gg==.F3qz7dvZY+2H+q
+	IcIiXRno5w6IGZceKv2wneU3BIuooHJbTpC1HVI7pnqcRAdK3/erPS9URevT6x8IUpsMgQMkWhT
+	QJ0IVbetSDDyfBHYc53BXzwqGLzNC88lzngRLvOAjOmSiAiNlkvuVzXPk8oUAg/8xe3POeZ/OOy
+	+BgcHGTB1CeXFqfctms60vuR/6gZN8izgyc4hKaV7IOQrLrjyct5++EV8EonivnAaqW+tpV2UZI
+	pH9U7yW746qb/wuXaSyLfaBszc7i3ERDyos283Dx/Y8DYJ5kan1RsmiZa8GfApXKwZR32BQRks9
+	cqt3ipY0RaDx0ZOR12F6KhyLm+Vw==
+X-TM-Addin-ProductCode: EMS
